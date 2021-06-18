@@ -1,0 +1,13 @@
+<div>
+  <label for="familienstandInput"> Familienstand: </label>
+  <span [formGroup]="form">
+    <mat-form-field>
+      <mat-select formControlName="familienstand">
+        <mat-option value="G"> Geschieden </mat-option>
+        <mat-option value="VH"> Verheiratet </mat-option>
+        <mat-option value="VW"> Verwittwet </mat-option>
+        <mat-option value="G"> Geschieden </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </span>
+</div>

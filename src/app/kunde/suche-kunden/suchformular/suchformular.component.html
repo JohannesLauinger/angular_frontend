@@ -1,0 +1,26 @@
+<form (submit)="onFind()" role="form">
+  <mat-card>
+    <mat-card-header color="primary">
+      <mat-card-title>Eingabe der Suchkriterien</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <hs-suche-nachname></hs-suche-nachname>
+      <!-- <hs-suche-email></hs-suche-email> -->
+      <hs-suche-geschlecht></hs-suche-geschlecht>
+      <hs-suche-interessen></hs-suche-interessen>
+      <div>
+        <span class="hinweis">
+          <mat-icon>info</mat-icon>
+          Hinweis: Keine Eingabe liefert alle Kunden
+        </span>
+      </div>
+
+      <div>
+        <button mat-raised-button color="accent" type="submit">
+          <mat-icon>search</mat-icon>
+          <span>Suchen</span>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>

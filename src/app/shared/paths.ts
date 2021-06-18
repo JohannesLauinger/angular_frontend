@@ -34,6 +34,6 @@ export const BASE_PATH_REST = BASE_PATH_PROXY;
 // export const BASE_PATH_REST = BASE_PATH_CORS;
 
 /**
- * Pfad beim REST-Server fuer buecher
+ * Pfad beim REST-Server fuer kunden
  */
-export const BUECHER_PATH_REST = '';
+export const KUNDEN_PATH_REST = '';

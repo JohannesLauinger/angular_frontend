@@ -1,0 +1,8 @@
+<div>
+  <label> Geschlecht: </label>
+  <span [ngSwitch]="geschlecht">
+    <span *ngSwitchCase="'M'">Männlich</span>
+    <span *ngSwitchCase="'W'">Weiblich</span>
+    <span *ngSwitchCase="'D'">Divers</span>
+  </span>
+</div>

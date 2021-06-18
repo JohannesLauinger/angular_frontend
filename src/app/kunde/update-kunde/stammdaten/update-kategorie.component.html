@@ -1,0 +1,20 @@
+<div>
+  <label for="kategorieInput"> Kategorie: </label>
+
+  <!-- <span [formGroup]="form">
+    <mat-slider min="0" max="5" step="1" value="currentValue" fromControlName="kategorie">
+    </mat-slider>
+  </span> -->
+  <span [formGroup]="form">
+    <mat-form-field>
+      <mat-select formControlName="kategorie">
+        <mat-option value="0"> 0 </mat-option>
+        <mat-option value="1"> 1 </mat-option>
+        <mat-option value="2"> 2 </mat-option>
+        <mat-option value="3"> 3 </mat-option>
+        <mat-option value="4"> 4 </mat-option>
+        <mat-option value="5"> 5 </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </span>
+</div>

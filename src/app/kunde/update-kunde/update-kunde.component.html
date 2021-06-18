@@ -1,0 +1,15 @@
+<section *ngIf="kunde">
+  <mat-toolbar color="primary">
+    <span *ngIf="kunde">Kunde {{ kunde._id }}:</span>
+  </mat-toolbar>
+  <mat-tab-group>
+    <mat-tab label="Stammdaten">
+      <hs-update-stammdaten [kunde]="kunde"></hs-update-stammdaten>
+    </mat-tab>
+    <mat-tab label="Interessen">
+      <hs-update-interessen [kunde]="kunde"></hs-update-interessen>
+    </mat-tab>
+  </mat-tab-group>
+</section>
+
+<hs-error-message [text]="errorMsg"></hs-error-message>

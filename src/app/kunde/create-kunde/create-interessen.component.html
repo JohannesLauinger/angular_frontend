@@ -1,0 +1,10 @@
+<div>
+  <label for="Interessen" class="interessen-label"> Interessen: </label>
+  <div [formGroup]="form" class="interessen-div">
+    <mat-checkbox id="reisenInput" formControlName="reisen"
+      >Reisen</mat-checkbox
+    >
+    <mat-checkbox id="lesenInput" formControlName="lesen">Lesen</mat-checkbox>
+    <mat-checkbox id="sportInput" formControlName="sport">Sport</mat-checkbox>
+  </div>
+</div>

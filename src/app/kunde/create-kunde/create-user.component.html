@@ -1,0 +1,19 @@
+<div class="username-container">
+  <mat-form-field appearance="standard" [formGroup]="form">
+    <mat-label>Username: </mat-label>
+    <input matInput required formControlName="username" />
+    <mat-error *ngIf="username.errors && username.errors.required">
+      Ein Username muss eingegeben werden
+    </mat-error>
+    <mat-error *ngIf="username.errors && username.errors.pattern">
+      Ein Nachname muss mit einem Buchstaben beginnen
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="standard" [formGroup]="form">
+    <mat-label>Password: </mat-label>
+    <input matInput required formControlName="password" />
+    <mat-error *ngIf="username.errors && username.errors.required">
+      Ein Password muss eingegeben werden
+    </mat-error>
+  </mat-form-field>
+</div>

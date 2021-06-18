@@ -1,0 +1,32 @@
+<!--
+    Copyright (C) 2018 - present Juergen Zimmermann, Hochschule Karlsruhe
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<div class="nachname-container">
+  <mat-form-field appearance="standard" [formGroup]="form">
+    <mat-label>Nachname: </mat-label>
+    <input matInput required formControlName="nachname" />
+    <mat-error *ngIf="nachname.errors && nachname.errors.required">
+      Ein Nachname muss eingegeben werden
+    </mat-error>
+    <mat-error *ngIf="nachname.errors && nachname.errors.minlenght">
+      Ein Nachname muss min. 2 Zeichen lang sein
+    </mat-error>
+    <mat-error *ngIf="nachname.errors && nachname.errors.pattern">
+      Ein Nachname muss mit einem Buchstaben beginnen
+    </mat-error>
+  </mat-form-field>
+</div>

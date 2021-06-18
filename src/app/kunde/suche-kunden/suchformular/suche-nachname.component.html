@@ -1,0 +1,18 @@
+<div>
+  <span>
+    <br />
+    <label for="nachnameInput" class="nachname-label">Nachname: </label>
+  </span>
+  <span class="spacer"></span>
+  <span>
+    <mat-form-field appereance="standard">
+      <input
+        matInput
+        id="nachnameInput"
+        placeholder="Den Nachnamen oder ein Teil davon eingeben"
+        [(ngModel)]="nachname"
+        name="nachname"
+      />
+    </mat-form-field>
+  </span>
+</div>

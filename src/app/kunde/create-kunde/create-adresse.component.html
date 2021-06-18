@@ -1,0 +1,25 @@
+<div class="adresse-container">
+  <mat-form-field appearance="standard" [formGroup]="form">
+    <mat-label>Ort: </mat-label>
+    <input matInput formControlName="ort" />
+    <mat-error *ngIf="ort.errors && ort.errors.required">
+      Eine Ort muss eingegeben werden
+    </mat-error>
+    <mat-error *ngIf="ort.errors && ort.errors.pattern">
+      Kein Gültiger Ort
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="standard" [formGroup]="form">
+    <mat-label>Plz: </mat-label>
+    <input matInput formControlName="plz" />
+    <mat-error *ngIf="plz.errors && plz.errors.required">
+      Eine PLZ muss eingegeben werden
+    </mat-error>
+    <mat-error *ngIf="plz.errors && plz.errors.minlength">
+      Eine PLZ muss 5 Zeichen lang sein
+    </mat-error>
+    <mat-error *ngIf="plz.errors && plz.errors.maxlength">
+      Eine PLZ muss 5 Zeichen lang sein
+    </mat-error>
+  </mat-form-field>
+</div>

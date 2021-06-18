@@ -15,11 +15,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgModule } from '@angular/core';
 import { WaitingComponent } from './waiting.component';
 
 @NgModule({
     declarations: [WaitingComponent],
     exports: [WaitingComponent],
+    imports: [MatProgressSpinnerModule],
 })
 export class WaitingModule {}

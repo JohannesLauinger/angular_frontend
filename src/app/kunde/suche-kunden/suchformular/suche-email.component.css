@@ -1,0 +1,13 @@
+.nachname-label {
+  font-size: 18px;
+  margin-right: 62px;
+}
+
+mat-form-field {
+  min-width: 200px;
+  width: 80%;
+}
+
+.spacer {
+  width: 100px;
+}

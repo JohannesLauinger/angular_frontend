@@ -1,0 +1,10 @@
+.interessen-label {
+  font-size: 18px;
+  margin-right: 62px;
+}
+
+.interessen-div {
+  align-content: center;
+  align-items: center;
+  display: flex;
+}

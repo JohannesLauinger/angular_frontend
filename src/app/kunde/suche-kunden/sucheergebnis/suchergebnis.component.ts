@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable rxjs/no-ignored-error */
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 /* eslint-disable max-classes-per-file */
@@ -7,12 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
 import { HttpStatus, easeIn, easeOut } from '../../../shared';
 import { Kunde, KundeService } from '../../shared';
-import type {
-    OnChanges,
-    OnDestroy,
-    OnInit,
-    SimpleChanges,
-} from '@angular/core';
+import type { OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../../auth/auth.service';
 import { NgLocalization } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -24,13 +20,12 @@ import type { Suchkriterien } from '../../shared/types';
     styleUrls: ['./suchergebnis.component.css'],
     animations: [easeIn, easeOut],
 })
-export class SuchergebnisComponent implements OnChanges, OnInit, OnDestroy {
+export class SuchergebnisComponent implements OnInit, OnDestroy {
     @Input()
     suchkriterien: Suchkriterien | undefined;
 
     waiting = false;
 
-    // eslint-disable-next-line prettier/prettier
     displayedColumns: string[] = ['_id', 'nachname', 'email', 'interessen'];
 
     kunden: Kunde[] = [];
@@ -54,16 +49,6 @@ export class SuchergebnisComponent implements OnChanges, OnInit, OnDestroy {
         private readonly authService: AuthService,
     ) {
         console.log('SuchergebnisComponent.constructor()');
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-        if (changes.suchkriterien.currentValue === undefined) {
-            return;
-        }
-
-        this.waiting = true;
-        // eslint-disable-next-line rxjs/no-ignored-observable
-        this.kundeService.find(this.suchkriterien);
     }
 
     // Attribute mit @Input() sind undefined im Konstruktor.

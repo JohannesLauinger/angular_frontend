@@ -1,0 +1,17 @@
+<div>
+  <label for="plzInput"> PLZ: </label>
+  <span>
+    <mat-form-field appearance="standard" [formGroup]="form">
+      <input matInput formControlName="plz" />
+      <mat-error *ngIf="plz.errors && plz.errors.required">
+        Bitte eine PLZ eingeben
+      </mat-error>
+      <mat-error *ngIf="plz.errors && plz.errors.minlength">
+        PLZ muss 5 Zeichen sein lang sein
+      </mat-error>
+      <mat-error *ngIf="plz.errors && plz.errors.maxlength">
+        PLZ muss 5 Zeichen sein lang sein
+      </mat-error>
+    </mat-form-field>
+  </span>
+</div>

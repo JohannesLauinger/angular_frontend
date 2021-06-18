@@ -1,0 +1,30 @@
+<hs-waiting *ngIf="waiting; else details"></hs-waiting>
+
+<ng-template #details>
+  <hs-details-breadcrumbs></hs-details-breadcrumbs>
+
+  <section *ngIf="kunde; else showErrorMsg">
+    <mat-toolbar color="primary">
+      <span *ngIf="kunde; else showErrorMsg">Kunde {{ kunde._id }}:</span>
+    </mat-toolbar>
+    <mat-tab-group>
+      <mat-tab label="Stammdaten">
+        <hs-details-stammdaten [kunde]="kunde"></hs-details-stammdaten>
+      </mat-tab>
+      <mat-tab label="Interessen">
+        <hs-details-interessen
+          [values]="kunde.interessen"
+        ></hs-details-interessen>
+      </mat-tab>
+    </mat-tab-group>
+    <div class="spacer"></div>
+    <hs-details-bearbeiten
+      [id]="kunde._id"
+      *ngIf="isAdmin"
+    ></hs-details-bearbeiten>
+    <hs-details-loeschen [kunde]="kunde" *ngIf="isAdmin"></hs-details-loeschen>
+  </section>
+  <ng-template #showErrorMsg>
+    <hs-error-message [text]="errorMsg"></hs-error-message>
+  </ng-template>
+</ng-template>

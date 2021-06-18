@@ -1,0 +1,14 @@
+<div>
+  <label for="ortInput"> Ort: </label>
+  <span>
+    <mat-form-field appearance="standard" [formGroup]="form">
+      <input matInput formControlName="ort" />
+      <mat-error *ngIf="ort.errors && ort.errors.required">
+        Bitte eine PLZ eingeben
+      </mat-error>
+      <mat-error *ngIf="ort.errors && ort.errors.pattern">
+        Kein gültiger Ort
+      </mat-error>
+    </mat-form-field>
+  </span>
+</div>

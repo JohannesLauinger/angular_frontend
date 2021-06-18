@@ -1,0 +1,29 @@
+<div>
+  <span>
+    <label for="geschlechtInput" class="nachname-label">Geschlecht: </label>
+  </span>
+  <br />
+  <mat-radio-group class="example-radio-group" [(ngModel)]="geschlecht">
+    <mat-radio-button
+      class="example-radio-button"
+      id="maennlichInput"
+      value="MAENNLICH"
+    >
+      Männlich
+    </mat-radio-button>
+    <mat-radio-button
+      class="example-radio-button"
+      id="weiblichInput"
+      value="WEIBLICH"
+    >
+      Weiblich
+    </mat-radio-button>
+    <mat-radio-button
+      class="example-radio-button"
+      id="diversInput"
+      value="DIVERS"
+    >
+      Divers
+    </mat-radio-button>
+  </mat-radio-group>
+</div>

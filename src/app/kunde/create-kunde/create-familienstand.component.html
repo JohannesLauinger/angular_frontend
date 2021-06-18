@@ -1,0 +1,17 @@
+<div>
+  <label class="familienstand-label">Familienstand: </label>
+  <div [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Familienstand auswählen</mat-label>
+      <mat-select formControlName="familienstand" required>
+        <mat-option value="L"> Ledig </mat-option>
+        <mat-option value="VW"> Verwittwet </mat-option>
+        <mat-option value="VH"> Verheiratet </mat-option>
+        <mat-option value="G"> Geschieden </mat-option>
+      </mat-select>
+      <mat-error *ngIf="familienstand.errors && familienstand.errors.required">
+        Bitte wählen Sie den Familienstand aus
+      </mat-error>
+    </mat-form-field>
+  </div>
+</div>

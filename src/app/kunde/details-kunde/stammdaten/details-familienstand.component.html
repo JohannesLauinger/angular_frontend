@@ -1,0 +1,9 @@
+<div>
+  <label> Familienstand: </label>
+  <span [ngSwitch]="familienstand">
+    <span *ngSwitchCase="'L'">Ledig</span>
+    <span *ngSwitchCase="'VH'">Verheiratet</span>
+    <span *ngSwitchCase="'VW'">Verwittwet</span>
+    <span *ngSwitchCase="'G'">Geschieden</span>
+  </span>
+</div>

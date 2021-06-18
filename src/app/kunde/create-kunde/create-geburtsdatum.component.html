@@ -1,0 +1,24 @@
+<div class="create-geburtsdatum">
+  <mat-label for="geburtsdatumInput">Geburtsdatum:</mat-label>
+
+  <!-- <mat-form-field [formGroup]="form">
+        <input matInput [matDatepicker]="picker"
+            id="geburtsdatumInput"
+            formControlName="geburtsdatum">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> -->
+  <div [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Geburtsdatum</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        id="geburtsdatumInput"
+        formControlName="geburtsdatum"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>

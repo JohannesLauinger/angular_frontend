@@ -1,0 +1,10 @@
+<div *ngFor="let interesse of values">
+  <div>
+    <mat-icon color="primary">check_box</mat-icon>
+    <label [ngSwitch]="interesse">
+      <span *ngSwitchCase="'R'">Reisen</span>
+      <span *ngSwitchCase="'L'">Lesen</span>
+      <span *ngSwitchCase="'S'">Sport</span>
+    </label>
+  </div>
+</div>

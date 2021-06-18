@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+// eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 import { ActivatedRoute, Params } from '@angular/router';
 import { Kunde, KundeService } from '../shared';
@@ -48,7 +48,7 @@ export class UpdateKundeComponent implements OnInit, OnDestroy {
         this.kundeSubscription = this.subscribeKunde();
         this.errorSubscription = this.subscribeError();
 
-        // Pfad-Parameter aus /buecher/:id/update
+        // Pfad-Parameter aus /kunden/:id/update
         this.idParamSubscription = this.subscribeIdParam();
 
         this.titleService.setTitle('Aktualisieren');
@@ -70,7 +70,8 @@ export class UpdateKundeComponent implements OnInit, OnDestroy {
             this.kunde = kunde;
             console.log('UpdateKunde.kunde)', this.kunde);
         };
-        return this.kundeService.kundenSubject.subscribe(next);
+        // eslint-disable-next-line rxjs/no-ignored-error
+        return this.kundeService.kundeSubject.subscribe(next);
     }
 
     /**
@@ -101,6 +102,7 @@ export class UpdateKundeComponent implements OnInit, OnDestroy {
             console.log(`UpdateKundeComponent.errorMsg: ${this.errorMsg}`);
         };
 
+        // eslint-disable-next-line rxjs/no-ignored-error
         return this.kundeService.errorSubject.subscribe(next);
     }
 

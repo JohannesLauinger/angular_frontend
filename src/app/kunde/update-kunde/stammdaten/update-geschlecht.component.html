@@ -1,0 +1,12 @@
+<div>
+  <label for="geschlechtInput"> Geschlecht: </label>
+  <span [formGroup]="form">
+    <mat-form-field>
+      <mat-select formControlName="geschlecht">
+        <mat-option value="M"> Männlich </mat-option>
+        <mat-option value="W"> Weiblich </mat-option>
+        <mat-option value="D"> Divers </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </span>
+</div>

@@ -22,3 +22,4 @@
 export * from './animations';
 export * from './functions';
 export * from './paths';
+export * from './httpStatus';

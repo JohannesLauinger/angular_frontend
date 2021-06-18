@@ -66,14 +66,14 @@ POST {{localHTTPS}}/rest/buecher
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.token}}
 
-< ./buch-neu.json
+< ./kunde-neu.json
 
 ### Neues Buch mit ungueltigen Daten anlegen
 POST {{localHTTPS}}/rest/buecher
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.token}}
 
-< ./buch-neu-invalid.json
+< ./kunde-neu-invalid.json
 
 ### Vorhandenes Buch aktualisieren
 PUT {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000003
@@ -81,14 +81,14 @@ Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.token}}
 If-Match: 0
 
-< ./buch-3-put.json
+< ./kunde-3-put.json
 
 ### Vorhandenes Buch *OHNE* Versionsnummer aktualisieren
 PUT {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000003
 Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.token}}
 
-< ./buch-3-put.json
+< ./kunde-3-put.json
 
 ### Vorhandenes Buch mit ungueltigen Daten aktualisieren
 PUT {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000003
@@ -96,7 +96,7 @@ Content-Type: application/json
 Authorization: Bearer {{login.response.body.$.token}}
 If-Match: 0
 
-< ./buch-3-put-invalid.json
+< ./kunde-3-put-invalid.json
 
 ### Loeschen eines vorhandenen Buches
 DELETE {{localHTTPS}}/rest/buecher/00000000-0000-0000-0000-000000000005

@@ -91,6 +91,11 @@ export class AuthService {
         this.rollen$.next([]);
     }
 
+    // eslint-disable-next-line rxjs/finnish
+    get rollenSubject() {
+        return this.rollen$;
+    }
+
     /**
      * @return String fuer JWT oder Basic-Authentifizierung
      */

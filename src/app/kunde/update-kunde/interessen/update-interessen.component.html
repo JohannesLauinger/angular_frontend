@@ -1,0 +1,22 @@
+<form [formGroup]="form" role="form">
+  <div>
+    <mat-checkbox id="reisenInput" formControlName="reisen"
+      >Reisen</mat-checkbox
+    >
+    <br />
+    <mat-checkbox id="lesenInput" formControlName="lesen">Lesen</mat-checkbox>
+    <br />
+    <mat-checkbox id="sportInput" formControlName="sport">Sport</mat-checkbox>
+  </div>
+  <div class="button">
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit"
+      (click)="onUpdate()"
+      [disabled]="form.pristine || form.invalid"
+    >
+      Interessen aktualisieren
+    </button>
+  </div>
+</form>

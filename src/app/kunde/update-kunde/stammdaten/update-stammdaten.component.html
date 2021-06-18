@@ -1,0 +1,35 @@
+<form [formGroup]="form" role="form">
+  <!-- <hs-update-kategorie
+    [form]="form"
+    [currentValue]="kunde.kategorie"
+  ></hs-update-kategorie> -->
+  <hs-update-homepage
+    [form]="form"
+    [currentValue]="kunde.homepage"
+  ></hs-update-homepage>
+  <hs-update-geschlecht
+    [form]="form"
+    [currentValue]="kunde.geschlecht"
+  ></hs-update-geschlecht>
+  <hs-update-familienstand
+    [form]="form"
+    [currentValue]="kunde.familienstand"
+  ></hs-update-familienstand>
+  <hs-update-plz [form]="form" [currentValue]="kunde.plz"> </hs-update-plz>
+  <hs-update-ort [form]="form" [currentValue]="kunde.ort"> </hs-update-ort>
+  <hs-update-newsletter [form]="form" [currentValue]="kunde.newsletter">
+  </hs-update-newsletter>
+
+  <div>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="onUpdate()"
+      type="submit"
+      [disabled]="form.pristine"
+    >
+      Stammdaten aktualisieren
+    </button>
+  </div>
+  <div></div>
+</form>
