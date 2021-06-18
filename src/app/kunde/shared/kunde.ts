@@ -138,13 +138,13 @@ export interface ServerResponse {
 export class Kunde {
     private static readonly SPACE = 2;
 
-    kategorieArray: boolean[] =
-        /* eslint-disable unicorn/no-new-array, unicorn/prefer-spread */
-        this.kategorie === undefined
-            ? new Array(MAX_RATING - MIN_RATING).fill(false)
-            : new Array(this.kategorie - MIN_RATING)
-                  .fill(true)
-                  .concat(new Array(MAX_RATING - this.kategorie));
+    // kategorieArray: boolean[] =
+    //     /* eslint-disable unicorn/no-new-array, unicorn/prefer-spread */
+    //     this.kategorie === undefined
+    //         ? new Array(MAX_RATING - MIN_RATING).fill(false)
+    //         : new Array(this.kategorie - MIN_RATING)
+    //               .fill(true)
+    //               .concat(new Array(MAX_RATING - this.kategorie));
     /* eslint-enable unicorn/no-new-array, unicorn/prefer-spread */
 
     geburtsdatum: Date | undefined;
@@ -342,14 +342,14 @@ export class Kunde {
         this.nachname = nachname;
         this.email = email;
         this.kategorie = kategorie;
-        this.kategorieArray =
-            kategorie === undefined
-                ? (Array.from({ length: MAX_RATING - MIN_RATING }).fill(
-                      false,
-                  ) as boolean[])
-                : (Array.from({ length: kategorie - MIN_RATING }).fill(
-                      true,
-                  ) as boolean[]);
+        // this.kategorieArray =
+        //     kategorie === undefined
+        //         ? (Array.from({ length: MAX_RATING - MIN_RATING }).fill(
+        //               false,
+        //           ) as boolean[])
+        //         : (Array.from({ length: kategorie - MIN_RATING }).fill(
+        //               true,
+        //           ) as boolean[]);
         this.geburtsdatum = geburtsdatum;
         this.homepage = homepage;
         this.geschlecht = geschlecht;

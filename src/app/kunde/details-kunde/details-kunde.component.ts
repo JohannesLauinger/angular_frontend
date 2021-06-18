@@ -14,7 +14,6 @@ import { Title } from '@angular/platform-browser';
 @Component({
     selector: 'hs-details-kunde',
     templateUrl: './details-kunde.component.html',
-    styleUrls: ['./details-kunde.component.css'],
 })
 export class DetailsKundeComponent implements OnInit, OnDestroy {
     waiting = true;

@@ -22,7 +22,7 @@ export class SuchformularComponent {
     // Subject statt der Basisklasse Observable, damit next() in onFind() aufgerufen werden kann
     // https://angular.io/guide/component-interaction#parent-listens-for-child-event
     @Output()
-    readonly suchkriterien = new Subject<Suchkriterien>();
+    readonly suchkriterien$ = new Subject<Suchkriterien>();
 
     // DI der Child-Komponente, um auf deren Attribut (hier: "nachname") zuzugreifen
     // @Output in SucheNahcnameComponent wuerde Subject<> erfordern
@@ -63,7 +63,7 @@ export class SuchformularComponent {
                 geschlecht=${geschlecht}, reisen=${reisen}, lesen=${lesen}, sport=${sport}`,
         );
 
-        this.suchkriterien.next({
+        this.suchkriterien$.next({
             nachname,
             geschlecht,
             interessen: { lesen, reisen, sport },

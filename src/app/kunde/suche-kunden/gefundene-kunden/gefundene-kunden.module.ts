@@ -15,17 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { DetailsLöschenComponent } from './details-löschen.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { GefundeneKundenComponent } from './gefundene-kunden.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-    declarations: [DetailsLöschenComponent],
-    exports: [DetailsLöschenComponent],
-    // eslint-disable-next-line @angular-eslint/sort-ngmodule-metadata-arrays
-    imports: [CommonModule, RouterModule, MatIconModule, MatButtonModule],
+    declarations: [GefundeneKundenComponent],
+    exports: [GefundeneKundenComponent],
+    imports: [BrowserAnimationsModule, CommonModule, RouterModule],
 })
-export class DetailsLöschenModule {}
+export class GefundeneKundenModule {}

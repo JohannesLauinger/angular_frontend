@@ -16,7 +16,7 @@
 /* eslint-disable max-lines,no-null/no-null */
 
 import { BASE_PATH_REST, KUNDEN_PATH_REST } from '../../shared';
-import type { Geschlecht, KundeServer } from './kunde';
+import type { Geschlecht, KundeServer, ServerResponse } from './kunde';
 // Bereitgestellt durch HttpClientModule
 // HttpClientModule enthaelt nur Services, keine Komponenten
 import {
@@ -33,7 +33,7 @@ import { Kunde } from './kunde';
 // https://github.com/ReactiveX/rxjs/blob/master/src/internal/Observable.ts
 import { Subject, of } from 'rxjs';
 import type { Observable } from 'rxjs';
-import { FindError } from './errors';
+import { FindError, RemoveError } from './errors';
 
 // Methoden der Klasse HttpClient
 //  * get(url, options) – HTTP GET request
@@ -113,7 +113,7 @@ export class KundeService {
 
         return (
             this.httpClient
-                .get<KundeServer[]>(url, { params })
+                .get<ServerResponse>(url, { params })
 
                 // Observable: mehrere Werte werden "lazy" bereitgestellt, statt in einem JSON-Array
                 // pipe ist eine "pure" Funktion, die ein Observable in ein NEUES Observable transformiert
@@ -136,19 +136,15 @@ export class KundeService {
     }
 
     private findResultToKundeArray(
-        result: FindError | KundeServer[],
+        result: FindError | ServerResponse,
     ): FindError | Kunde[] {
         if (result instanceof FindError) {
             return result;
         }
-
-        if (Array.isArray(result)) {
-            const kunden = result.map(kunde => Kunde.fromServer(kunde));
-            console.debug('KundeService.mapFindResult(): kunden=', kunden);
-            return kunden;
-        }
-
-        return result;
+        const kundeArray = result._embedded.kundeList;
+        const kunden = kundeArray.map(kunde => Kunde.fromServer(kunde));
+        console.debug('KundeService.mapFindResult(): kunden=', kunden);
+        return kunden;
     }
 
     /**
@@ -340,33 +336,27 @@ export class KundeService {
     }
 
     /**
-     * Ein Kunde l&ouml;schen
+     * Einen Kunden löschen
      * @param kunde Das JSON-Objekt mit dem zu loeschenden Kunden
-     * @param successFn Die Callback-Function fuer den Erfolgsfall
-     * @param errorFn Die Callback-Function fuer den Fehlerfall
      */
-    remove(
-        kunde: Kunde,
-        successFn: (() => void) | undefined,
-        errorFn: (status: number) => void,
-    ) {
-        console.log('KundeService.remove(): kunde=', kunde);
-        const uri = `${this.baseUriKunde}/${kunde._id}`;
+    remove(kunde: Kunde): Observable<Record<string, unknown> | RemoveError> {
+        console.debug('KundeService.remove(): kunde=', kunde);
+        const url = `${this.baseUriKunde}/${kunde._id}`;
 
-        const errorFnDelete = (err: HttpErrorResponse) => {
-            if (err.error instanceof Error) {
-                console.error(
-                    'Client-seitiger oder Netzwerkfehler',
-                    err.error.message,
-                );
-            } else if (errorFn === undefined) {
-                console.error('errorFnPut', err);
-            } else {
-                errorFn(err.status);
-            }
-        };
+        return this.httpClient.delete(url).pipe(
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            catchError((err: unknown, _$) => {
+                const errResponse = err as HttpErrorResponse;
+                return of(new RemoveError(errResponse.status));
+            }),
 
-        return this.httpClient.delete(uri).subscribe(successFn, errorFnDelete);
+            map(result => {
+                if (result instanceof RemoveError) {
+                    return result;
+                }
+                return {};
+            }),
+        );
     }
 
     /**

@@ -13,7 +13,6 @@ import { HttpStatusCode } from '@angular/common/http';
 @Component({
     selector: 'hs-suche-kunden',
     templateUrl: './suche-kunden.component.html',
-    styleUrls: ['./suche-kunden.component.css'],
 })
 export class SucheKundenComponent implements OnInit {
     suchkriterien!: Suchkriterien;
@@ -109,7 +108,7 @@ export class SucheKundenComponent implements OnInit {
         }
 
         console.log(
-            `SucheBuecherComponent.setErrorMsg(): errorMsg=${this.errorMsg}`,
+            `SucheKundenComponent.setErrorMsg(): errorMsg=${this.errorMsg}`,
         );
     }
 
@@ -122,11 +121,4 @@ export class SucheKundenComponent implements OnInit {
      * Kindkomponente f&uuml;r <code>&lt;suchergebnis&gt;</code> weitergereicht.
      * @param $event true f&uuml;r das Ausl&ouml;sen der Suche.
      */
-    setSuchkriterien($event: Suchkriterien) {
-        console.log(
-            'SucheKundenComponent.setSuchkriterien(): suchkriterien=',
-            $event,
-        );
-        this.suchkriterien = $event;
-    }
 }

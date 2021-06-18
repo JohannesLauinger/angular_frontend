@@ -15,11 +15,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<span>
-  <a [routerLink]="['..', id, 'update']" aria-label="Kunde bearbeiten">
-    <button mat-raised-button color="accent">
-      <mat-icon>create</mat-icon>
-      <span>Bearbeiten</span>
-    </button>
+<div class="mt-4">
+  <a
+    [routerLink]="['..', id, 'update']"
+    class="ms-1"
+    aria-label="Kunde bearbeiten"
+  >
+    <i class="material-icons">edit</i>
+    <span class="ms-1">Bearbeiten</span>
   </a>
-</span>
+</div>

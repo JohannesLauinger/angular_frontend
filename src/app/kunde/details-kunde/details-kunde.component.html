@@ -3,27 +3,70 @@
 <ng-template #details>
   <hs-details-breadcrumbs></hs-details-breadcrumbs>
 
-  <section *ngIf="kunde; else showErrorMsg">
-    <mat-toolbar color="primary">
-      <span *ngIf="kunde; else showErrorMsg">Kunde {{ kunde._id }}:</span>
-    </mat-toolbar>
-    <mat-tab-group>
-      <mat-tab label="Stammdaten">
-        <hs-details-stammdaten [kunde]="kunde"></hs-details-stammdaten>
-      </mat-tab>
-      <mat-tab label="Interessen">
-        <hs-details-interessen
-          [values]="kunde.interessen"
-        ></hs-details-interessen>
-      </mat-tab>
-    </mat-tab-group>
-    <div class="spacer"></div>
-    <hs-details-bearbeiten
-      [id]="kunde._id"
-      *ngIf="isAdmin"
-    ></hs-details-bearbeiten>
-    <hs-details-loeschen [kunde]="kunde" *ngIf="isAdmin"></hs-details-loeschen>
+  <section class="mt-1 ms-1" *ngIf="kunde; else showErrorMsg">
+    <h4>Kunde {{ kunde._id }}:</h4>
+
+    <!-- https://v5.getbootstrap.com/docs/5.0/components/navs/#tabs -->
+    <!-- jQuery erfordert id -->
+    <ul class="nav nav-tabs mt-1 ms-1" id="kundeDetails">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          id="stammdaten-tab"
+          href="#stammdaten"
+          data-bs-toggle="tab"
+          role="tab"
+          aria-controls="stammdaten"
+          aria-expanded="true"
+        >
+          Stammdaten
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="kunde.hasInteressen()">
+        <a
+          class="nav-link"
+          id="interessen-tab"
+          href="#interessen"
+          data-bs-toggle="tab"
+          role="tab"
+          aria-controls="interessen"
+          aria-expanded="true"
+        >
+          Schlagwörter
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="kundeContent">
+      <div
+        class="tab-pane fade show active"
+        id="stammdaten"
+        role="tabpanel"
+        aria-labelledby="stammdaten-tab"
+      >
+        <div class="mt-2 ms-2">
+          <hs-details-stammdaten [kunde]="kunde"> </hs-details-stammdaten>
+        </div>
+      </div>
+
+      <div
+        class="tab-pane fade"
+        id="interessen"
+        role="tabpanel"
+        aria-labelledby="interessen-tab"
+        *ngIf="kunde.hasInteressen()"
+      >
+        <div class="mt-2 ms-2">
+          <hs-details-interessen [values]="kunde.interessen">
+          </hs-details-interessen>
+        </div>
+      </div>
+    </div>
+
+    <hs-details-bearbeiten [id]="kunde._id" *ngIf="isAdmin">
+    </hs-details-bearbeiten>
   </section>
+
   <ng-template #showErrorMsg>
     <hs-error-message [text]="errorMsg"></hs-error-message>
   </ng-template>
