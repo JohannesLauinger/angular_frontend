@@ -13,3 +13,8 @@ Zweite Projekt im Fach Software Engineering
 - Start der Kotlin-basierten Microservices aus dem 3. Sem.
 - DB-Zugriff (Visualisierung der persistenten Daten durch MongoDB Compass)
 - Git
+
+
+## Links
+
+Figma: https://www.figma.com/file/u4BUtZ7zTdntiNNOrLrzGt/angular_frontend_desktop?node-id=0%3A1
