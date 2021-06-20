@@ -29,6 +29,7 @@ import log from 'loglevel';
 @Component({
     selector: 'hs-login-logout',
     templateUrl: './login-logout.component.html',
+    styleUrls: ['./login-logout.component.css'],
 })
 export class LoginLogoutComponent implements OnInit {
     username: string | undefined;

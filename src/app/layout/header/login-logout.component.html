@@ -24,7 +24,7 @@
 >
   <button
     type="submit"
-    class="btn btn-primary"
+    class="btn btn-primary button me-5"
     (click)="onLogout()"
     *ngIf="(isLoggedIn$ | async) || init; else login"
   >
@@ -34,7 +34,7 @@
 </form>
 
 <ng-template #login>
-  <div class="col-12">
+  <div class="col-12" style="color: white;">
     <label for="usernameInput" class="col-form-label">
       <small>Benutzername</small>
     </label>
@@ -51,7 +51,7 @@
   </div>
 
   <div class="col-12">
-    <label for="passwordInput" class="col-form-label">
+    <label for="passwordInput" class="col-form-label" style="color: white;">
       <small>Passwort</small>
     </label>
     <input
@@ -65,10 +65,10 @@
       name="password"
     />
   </div>
-  <div class="col-12">
+  <div class="col-12 me-5">
     <button
       type="submit"
-      class="btn btn-primary btn-sm"
+      class="btn btn-primary btn-sm button"
       tabindex="3"
       (click)="onLogin()"
     >
