@@ -1,3 +1,4 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable sort-imports */
@@ -19,7 +20,12 @@ import { BASE_PATH_REST, KUNDEN_PATH_REST } from '../../shared';
 import type { Geschlecht, KundeServer, ServerResponse } from './kunde';
 // Bereitgestellt durch HttpClientModule
 // HttpClientModule enthaelt nur Services, keine Komponenten
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import {
+    HttpClient,
+    HttpHeaders,
+    HttpParams,
+    HttpResponse,
+} from '@angular/common/http';
 import { filter, map, catchError } from 'rxjs/operators';
 // import { DiagrammService } from '../../shared/diagramm.service';
 import { Injectable } from '@angular/core';

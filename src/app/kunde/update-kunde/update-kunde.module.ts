@@ -14,6 +14,7 @@ import { UpdateStammdatenModule } from './stammdaten/update-stammdaten.module';
     exports: [UpdateKundeComponent],
     imports: [
         CommonModule,
+        // eslint-disable-next-line @angular-eslint/sort-ngmodule-metadata-arrays
         FormsModule,
         ErrorMessageModule,
         MatToolbarModule,

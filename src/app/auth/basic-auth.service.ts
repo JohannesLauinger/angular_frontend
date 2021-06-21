@@ -93,7 +93,6 @@ export class BasicAuthService {
         // Array von Strings als 1 String
         const roles: string = json.join();
         log.debug(`BasicAuthService.login(): roles=${roles}`);
-        // eslint-disable-next-line prefer-destructuring
         const rolesArray: string[] | undefined = json.pop();
         this.cookieService.saveAuthorization(
             // Base64-String fuer 1 Tag speichern

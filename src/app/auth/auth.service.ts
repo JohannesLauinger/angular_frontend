@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable @typescript-eslint/consistent-type-imports */
 /*
  * Copyright (C) 2016 - present Juergen Zimmermann, Hochschule Karlsruhe
  *
@@ -16,7 +18,7 @@
  */
 
 import { BasicAuthService } from './basic-auth.service';
-import { CookieService } from './cookie.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
+import { CookieService } from './cookie.service';
 import { Injectable } from '@angular/core';
 // import { JwtService } from './jwt.service'; // eslint-disable-line @typescript-eslint/consistent-type-imports
 import { Subject } from 'rxjs';

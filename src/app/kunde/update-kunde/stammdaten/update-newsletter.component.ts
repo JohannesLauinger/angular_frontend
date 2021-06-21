@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { FormControl, FormGroup } from '@angular/forms';
 import type { OnInit } from '@angular/core';
 

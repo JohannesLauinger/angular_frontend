@@ -475,4 +475,5 @@ export class Kunde {
     }
 }
 /* eslint-enable max-lines */
+// eslint-disable-next-line eslint-comments/no-unused-enable
 /* eslint-enable no-extra-parens */

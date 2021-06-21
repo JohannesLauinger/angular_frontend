@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable @typescript-eslint/consistent-type-imports */
 import { Component, Input, OnInit } from '@angular/core';
 import type { Kunde } from '../../shared';
 import log from 'loglevel';

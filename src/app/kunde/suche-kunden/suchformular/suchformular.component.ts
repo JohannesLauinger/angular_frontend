@@ -1,7 +1,3 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable rxjs/finnish */
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable rxjs/suffix-subjects */
 import { Component, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SucheGeschlechtComponent } from './suche-geschlecht.component';
