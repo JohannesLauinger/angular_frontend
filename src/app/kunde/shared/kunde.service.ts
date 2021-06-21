@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable sort-imports */
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 /* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable unicorn/explicit-length-check */
-/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 /* eslint-disable @typescript-eslint/lines-between-class-members */
@@ -19,12 +19,7 @@ import { BASE_PATH_REST, KUNDEN_PATH_REST } from '../../shared';
 import type { Geschlecht, KundeServer, ServerResponse } from './kunde';
 // Bereitgestellt durch HttpClientModule
 // HttpClientModule enthaelt nur Services, keine Komponenten
-import {
-    HttpClient,
-    HttpErrorResponse,
-    HttpHeaders,
-    HttpParams,
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { filter, map, catchError } from 'rxjs/operators';
 // import { DiagrammService } from '../../shared/diagramm.service';
 import { Injectable } from '@angular/core';
@@ -33,7 +28,8 @@ import { Kunde } from './kunde';
 // https://github.com/ReactiveX/rxjs/blob/master/src/internal/Observable.ts
 import { Subject, of } from 'rxjs';
 import type { Observable } from 'rxjs';
-import { FindError, RemoveError } from './errors';
+import { FindError, RemoveError, SaveError } from './errors';
+import type { HttpErrorResponse } from '@angular/common/http';
 
 // Methoden der Klasse HttpClient
 //  * get(url, options) – HTTP GET request
@@ -233,31 +229,15 @@ export class KundeService {
      * @param successFn Die Callback-Function fuer den Erfolgsfall
      * @param errorFn Die Callback-Function fuer den Fehlerfall
      */
-    save(
-        kunde: Kunde,
-        successFn: (location: string | undefined) => void,
-        errorFn: (status: number, errors: { [s: string]: unknown }) => void,
-    ) {
-        console.log('KundeService.save(): kunde=', kunde);
+    save(kunde: Kunde): Observable<SaveError | string> {
+        console.debug('KundeService.save(): kunde=', kunde);
 
-        const errorFnPost = (err: HttpErrorResponse) => {
-            if (err.error instanceof Error) {
-                console.error(
-                    'KundeService.save(): errorFnPost(): Client- oder Netzwerkfehler',
-                    err.error.message,
-                );
-            } else if (errorFn === undefined) {
-                console.error('errorFnPost', err);
-            } else {
-                // z.B. {titel: ..., verlag: ..., isbn: ...}
-                errorFn(err.status, err.error);
-            }
-        };
-
+        /* eslint-disable @typescript-eslint/naming-convention */
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             Accept: 'text/plain',
         });
+
         return this.httpClient
             .post(this.baseUriKunde, kunde.toJSON(), {
                 headers,
@@ -265,19 +245,36 @@ export class KundeService {
                 responseType: 'text',
             })
             .pipe(
-                map(response => {
-                    console.debug(
-                        'KundeService.save(): map(): response',
-                        response,
-                    );
-                    const headersResponse = response.headers;
-                    const location = headersResponse.get('Location');
-                    const locationStr =
-                        location === null ? undefined : location;
-                    return locationStr;
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                catchError((err: unknown, _$) => {
+                    const errResponse = err as HttpErrorResponse;
+                    return of(new SaveError(errResponse.status, errResponse));
                 }),
-            )
-            .subscribe(location => successFn(location), errorFnPost);
+
+                // entweder Observable<HttpResponse<string>> oder Observable<SaveError>
+                map(result => this.mapSaveResultToId(result)),
+            );
+    }
+
+    private mapSaveResultToId(
+        result: HttpResponse<string> | SaveError,
+    ): SaveError | string {
+        if (!(result instanceof HttpResponse)) {
+            return result;
+        }
+
+        const response = result;
+        console.debug('KundeService.save(): map(): response', response);
+
+        // id aus Header "Locaction" extrahieren
+        const location = response.headers.get('Location');
+        const id = location?.slice(location.lastIndexOf('/') + 1);
+
+        if (id === undefined) {
+            return new SaveError(-1, 'Keine Id');
+        }
+
+        return id;
     }
 
     /**
@@ -591,7 +588,6 @@ export class KundeService {
             return new FindError(-1, err);
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const { status, error } = err;
         console.debug(
             `KundeService.buildFindError(): status=${status}, Response-Body=`,
