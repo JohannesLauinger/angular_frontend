@@ -1,0 +1,18 @@
+context('Testkunde überprüfen', () => {
+    it('Testkunden überprüfen',()=>{
+        cy.visit('https://localhost:4200/kunden/suche')
+        cy.get('#usernameInput').type('admin')
+        cy.get('#passwordInput').type('p')
+        cy.get('#navbarCollapse').contains('Login').click()
+        cy.get('#navbarCollapse').contains('Logout')
+        cy.contains('Suchen').click()
+        cy.contains('Testkunde').click()
+        cy.contains('test@mail.com')
+        cy.contains('19. Januar 1990')
+        cy.contains('https://www.acme.de')
+        cy.contains('Divers')
+        cy.contains('Ledig')
+        cy.contains('76131')
+        cy.contains('Karlsruhe')
+    })
+})

@@ -1,0 +1,18 @@
+context('Suchen', () => {
+    it('Einloggen und nach allen Standard-Kunden suchen',()=>{
+        cy.visit('https://localhost:4200/home')
+        cy.get('#usernameInput').type('admin')
+        cy.get('#passwordInput').type('p')
+        cy.get('#navbarCollapse').contains('Login').click()
+        cy.get('#navbarCollapse').contains('Logout')
+        cy.get('#navbarCollapse').contains('Suche Kunden').click()
+        cy.contains('Suchen').click()
+        cy.contains('00000000-0000-0000-0000-000000000000')
+        cy.contains('00000000-0000-0000-0000-000000000001')
+        cy.contains('00000000-0000-0000-0000-000000000002')
+        cy.contains('00000000-0000-0000-0000-000000000003')
+        cy.contains('00000000-0000-0000-0000-000000000004')
+        cy.contains('00000000-0000-0000-0000-000000000005')
+        cy.contains('00000000-0000-0000-0000-000000000006')
+    })
+})

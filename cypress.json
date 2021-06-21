@@ -1,0 +1,10 @@
+{
+    "testFiles": [
+        "login.spec.js",
+        "suchen.spec.js",
+        "anlegen.spec.js",
+        "überprüfen.spec.js",
+        "bearbeiten.spec.js",
+        "löschen.spec.js"
+      ]
+}

@@ -1,8 +1,5 @@
-/* eslint-disable no-extra-parens */
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/naming-convention */
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable unicorn/consistent-destructuring */
 /* eslint-disable max-lines */
@@ -39,7 +36,7 @@ export enum Familienstand {
 }
 
 /**
- * Gemeinsame Datenfelder unabh&auml;ngig, ob die Buchdaten von einem Server
+ * Gemeinsame Datenfelder unabh&auml;ngig, ob die Kundedaten von einem Server
  * (z.B. RESTful Web Service) oder von einem Formular kommen.
  */
 export interface KundeShared {
@@ -145,6 +142,7 @@ export class Kunde {
     //         : new Array(this.kategorie - MIN_RATING)
     //               .fill(true)
     //               .concat(new Array(MAX_RATING - this.kategorie));
+    // eslint-disable-next-line eslint-comments/no-unused-enable
     /* eslint-enable unicorn/no-new-array, unicorn/prefer-spread */
 
     geburtsdatum: Date | undefined;
@@ -180,7 +178,7 @@ export class Kunde {
      * Ein Kunde-Objekt mit JSON-Daten erzeugen, die von einem RESTful Web
      * Service kommen.
      * @param kunde JSON-Objekt mit Daten vom RESTful Web Server
-     * @return Das initialisierte Buch-Objekt
+     * @return Das initialisierte Kunde-Objekt
      */
     static fromServer(kundeServer: KundeServer, etag?: string) {
         let selfLink: string | undefined;
@@ -225,9 +223,9 @@ export class Kunde {
     }
 
     /**
-     * Ein Buch-Objekt mit JSON-Daten erzeugen, die von einem Formular kommen.
+     * Ein Kunde-Objekt mit JSON-Daten erzeugen, die von einem Formular kommen.
      * @param kunde JSON-Objekt mit Daten vom Formular
-     * @return Das initialisierte Buch-Objekt
+     * @return Das initialisierte Kunde-Objekt
      */
     static fromForm(kundeForm: KundeForm) {
         console.log('Kunde.fromForm(): kundeForm=', kundeForm);
@@ -280,7 +278,7 @@ export class Kunde {
      * Abfrage, ob im Kundennamen der angegebene Teilstring enthalten ist. Dabei
      * wird nicht auf Gross-/Kleinschreibung geachtet.
      * @param titel Zu &uuml;berpr&uuml;fender Teilstring
-     * @return true, falls der Teilstring im Buchtitel enthalten ist. Sonst
+     * @return true, falls der Teilstring im Kundetitel enthalten ist. Sonst
      *         false.
      */
     containsTitel(nachname: string) {
@@ -311,17 +309,17 @@ export class Kunde {
     /**
      * Abfrage, ob der Kunde das Geschlecht hat
      * @param verlag der Name des Verlags
-     * @return true, falls das Buch dem Verlag zugeordnet ist. Sonst false.
+     * @return true, falls das Kunde dem Verlag zugeordnet ist. Sonst false.
      */
     hasGeschlecht(geschlecht: string) {
         return this.geschlecht === geschlecht;
     }
 
     /**
-     * Aktualisierung der Stammdaten des Buch-Objekts.
-     * @param titel Der neue Buchtitel
+     * Aktualisierung der Stammdaten des Kunde-Objekts.
+     * @param titel Der neue Kundetitel
      * @param rating Die neue Bewertung
-     * @param art Die neue Buchart (DRUCKAUSGABE oder KINDLE)
+     * @param art Die neue Kundeart (DRUCKAUSGABE oder KINDLE)
      * @param verlag Der neue Verlag
      * @param preis Der neue Preis
      * @param rabatt Der neue Rabatt
@@ -360,7 +358,7 @@ export class Kunde {
     }
 
     /**
-     * Abfrage, ob es zum Buch auch Schlagw&ouml;rter gibt.
+     * Abfrage, ob es zum Kunde auch Schlagw&ouml;rter gibt.
      * @return true, falls es mindestens ein Schlagwort gibt. Sonst false.
      */
     hasInteressen() {
@@ -373,7 +371,7 @@ export class Kunde {
     }
 
     /**
-     * Abfrage, ob es zum Buch das angegebene Schlagwort gibt.
+     * Abfrage, ob es zum Kunde das angegebene Schlagwort gibt.
      * @param schlagwort das zu &uuml;berpr&uuml;fende Schlagwort
      * @return true, falls es das Schlagwort gibt. Sonst false.
      */
@@ -386,7 +384,7 @@ export class Kunde {
     }
 
     /**
-     * Aktualisierung der Schlagw&ouml;rter des Buch-Objekts.
+     * Aktualisierung der Schlagw&ouml;rter des Kunde-Objekts.
      * @param javascript ist das Schlagwort JAVASCRIPT gesetzt
      * @param typescript ist das Schlagwort TYPESCRIPT gesetzt
      */
@@ -404,7 +402,7 @@ export class Kunde {
     }
 
     /**
-     * Konvertierung des Buchobjektes in ein JSON-Objekt f&uuml;r den RESTful
+     * Konvertierung des Kundeobjektes in ein JSON-Objekt f&uuml;r den RESTful
      * Web Service.
      * @return Das JSON-Objekt f&uuml;r den RESTful Web Service
      */
