@@ -17,3 +17,5 @@
 
 package.json
 ReadMe.md
+src\app\layout\header\login-logout.component.html
+src\app\layout\header\nav.component.html
